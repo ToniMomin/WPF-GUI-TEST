@@ -1,0 +1,273 @@
+﻿<Window x:Class="RMGUI_V01.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RMGUI_V01"
+        mc:Ignorable="d"
+        Title="Reifenmanager V01" Height="641.5" Width="1433.374">
+    <Grid Margin="0,0,0,-21">
+        <Button x:Name="btn_Suche" Content="Suche" HorizontalAlignment="Left" Height="27" Margin="28,417,0,0" VerticalAlignment="Top" Width="153" Click="btn_Suche_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btn_depot" Content="Depotansicht" HorizontalAlignment="Left" Height="28" Margin="28,450,0,0" VerticalAlignment="Top" Width="153" Click="btn_depot_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btn_verwaltung" Content="Verwaltung" HorizontalAlignment="Left" Height="27" Margin="28,484,0,0" VerticalAlignment="Top" Width="153" Click="btn_verwaltung_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="btn_Historie" Content="Historie" HorizontalAlignment="Left" Height="27" Margin="28,518,0,0" VerticalAlignment="Top" Width="153" Click="btn_Historie_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+        </Button>
+        <Frame x:Name="Frame" Content="" HorizontalAlignment="Left" Height="577" Margin="204,0,0,0" VerticalAlignment="Top" Width="800" NavigationUIVisibility="Hidden"/>
+        <TabControl HorizontalAlignment="Left" Height="594" VerticalAlignment="Top" Width="800" Margin="204,0,0,0">
+            <TabItem x:Name="tbi_suche" Header="Suche">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="tB_Suche" HorizontalAlignment="Left" Height="23" Margin="79,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="496"/>
+                    <Button x:Name="btn_auslösersuche" Content="Suchen" HorizontalAlignment="Left" Margin="602,102,0,0" VerticalAlignment="Top" Width="155" Click="btn_auslösersuche_Click"/>
+                    <ListView x:Name="lV_ausgabe" HorizontalAlignment="Left" Height="372" Margin="79,164,0,0" VerticalAlignment="Top" Width="678">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name"
+                                    DisplayMemberBinding="{Binding Name}"
+                                    Width="226"/>
+                                <GridViewColumn Header="Vorname"
+                                    DisplayMemberBinding="{Binding Vorname}"
+                                    Width="226"/>
+                                <GridViewColumn Header="Kennzeichen"
+                                    DisplayMemberBinding="{Binding Kennzeichen}"
+                                    Width="226"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tbi_depot" Header="Depotansicht">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="34*"/>
+                        <ColumnDefinition Width="363*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="lbl_Name" Content="Name" HorizontalAlignment="Left" Margin="31,34,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.003,5.111" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="txb_Name" HorizontalAlignment="Left" Height="23" Margin="10,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.453,1.128" Grid.Column="1" KeyDown="txb_Name_KeyDown"/>
+                    <Label x:Name="lbl_Vorname" Content="Vorname" HorizontalAlignment="Left" Margin="143,34,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBox x:Name="txb_vorname" HorizontalAlignment="Left" Height="23" Margin="215,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.043,0.575" Grid.Column="1"/>
+
+                    <Label x:Name="lbl_KdNr" Content="Kdnr.:" HorizontalAlignment="Left" Margin="340,34,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.521,0.669" Width="39" Grid.Column="1"/>
+                    <TextBox x:Name="txb_KdNr" HorizontalAlignment="Left" Height="23" Margin="379,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.113,0.937" Grid.Column="1"/>
+                    <Label x:Name="lbl_Kennzeichen" Content="Kennzeichen" HorizontalAlignment="Left" Margin="516,34,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.521,0.669" Width="91" Height="23" Grid.Column="1"/>
+                    <TextBox x:Name="txb_Name_Copy2" HorizontalAlignment="Left" Height="23" Margin="607,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" RenderTransformOrigin="-0.113,0.937" Grid.Column="1"/>
+                    <Label x:Name="lbl_marke" Content="Marke" HorizontalAlignment="Left" Margin="30,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.003,5.111" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="cB_marke" HorizontalAlignment="Left" Margin="11,80,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Label x:Name="lbl_Model" Content="Model" HorizontalAlignment="Left" Margin="143,76,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <ComboBox x:Name="cB_Model" HorizontalAlignment="Left" Height="26" Margin="215,76,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1">
+                        <ComboBoxItem Content="S-Max" HorizontalAlignment="Left" Width="118"/>
+                        <ComboBoxItem Content="C-Max" HorizontalAlignment="Left" Width="118"/>
+                        <ComboBoxItem Content="Focus" HorizontalAlignment="Left" Width="118"/>
+                        <ComboBoxItem Content="Fiesta" HorizontalAlignment="Left" Width="118"/>
+                        <ComboBoxItem Content="Ranger" HorizontalAlignment="Left" Width="118"/>
+                        <ComboBoxItem Content="Transit" HorizontalAlignment="Left" Width="118"/>
+                        <ComboBoxItem Content="Galaxy" HorizontalAlignment="Left" Width="118"/>
+                        <ComboBoxItem Content="Kuga" HorizontalAlignment="Left" Width="118"/>
+                    </ComboBox>
+                    <CheckBox x:Name="cB_TPMS" Content="TPMS" HorizontalAlignment="Left" Margin="215,129,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <CheckBox x:Name="cB_Radmuttern" Content="Radmuttern" HorizontalAlignment="Left" Margin="215,156,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1">
+                        <ComboBoxItem Content="Stahlfelge" HorizontalAlignment="Left" Width="118"/>
+                        <ComboBoxItem Content="Aluminiumfelge" HorizontalAlignment="Left" Width="118"/>
+                    </ComboBox>
+                    <Label Content="Felge" HorizontalAlignment="Left" Margin="31,125,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <CheckBox x:Name="cB_Radsicherung" Content="Radsicherung" HorizontalAlignment="Left" Height="17" Margin="356,129,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
+                    <CheckBox x:Name="cB_Radzierblenden" Content="Radzierblenden" HorizontalAlignment="Left" Height="17" Margin="356,154,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
+                    <RadioButton x:Name="rB_Sommerreifen" Content="Sommerreifen" HorizontalAlignment="Left" Margin="516,129,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <RadioButton x:Name="rB_WinterReifen" Content="Winterreifen" HorizontalAlignment="Left" Margin="516,156,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Label Content="VL" HorizontalAlignment="Left" Height="28" Margin="30,231,0,0" VerticalAlignment="Top" Width="39" RenderTransformOrigin="0.568,1.623" Grid.ColumnSpan="2"/>
+                    <Label Content="VR" HorizontalAlignment="Left" Height="28" Margin="31,271,0,0" VerticalAlignment="Top" Width="38" Grid.ColumnSpan="2"/>
+                    <Label Content="HL" HorizontalAlignment="Left" Height="28" Margin="31,304,0,0" VerticalAlignment="Top" Width="38" RenderTransformOrigin="0.93,2.419" Grid.ColumnSpan="2"/>
+                    <Label Content="HR" HorizontalAlignment="Left" Height="28" Margin="31,339,0,0" VerticalAlignment="Top" Width="38" RenderTransformOrigin="0.93,2.419" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="tB_ProfiltiefeVL" HorizontalAlignment="Left" Height="30" Margin="11,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" RenderTransformOrigin="-0.275,0.461" Grid.Column="1"/>
+                    <ComboBox x:Name="cB_markeVL" HorizontalAlignment="Left" Height="30" Margin="87,231,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1">
+
+                        <ComboBoxItem Content="Semperit" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="Continental" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="Kuhmo" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="Hankook" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <ComboBox x:Name="cB_FgBrVL" HorizontalAlignment="Left" Height="30" Margin="253,231,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1">
+                        <ComboBoxItem Content="175" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="185" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="195" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="205" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="215" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <ComboBox x:Name="cB_QuerVL" HorizontalAlignment="Left" Height="30" Margin="417,231,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1">
+                        <ComboBoxItem Content="50" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="75" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="95" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <ComboBox x:Name="cB_FgGrVL" HorizontalAlignment="Left" Height="30" Margin="583,231,0,0" VerticalAlignment="Top" Width="126" RenderTransformOrigin="1.53,0.693" Grid.Column="1">
+                        <ComboBoxItem Content="10" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="11" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="12" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="13" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="14" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="15" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="16" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="17" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="18" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="19" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="20" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <TextBox x:Name="tB_ProfiltiefeVR" HorizontalAlignment="Left" Height="30" Margin="11,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" RenderTransformOrigin="-0.275,0.461" Grid.Column="1"/>
+                    <ComboBox x:Name="cB_markeVR" HorizontalAlignment="Left" Height="30" Margin="87,267,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1">
+
+                        <ComboBoxItem Content="Semperit" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="Continental" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="Kuhmo" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="Hankook" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <ComboBox x:Name="cB_FgBrVR" HorizontalAlignment="Left" Height="30" Margin="253,267,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1">
+                        <ComboBoxItem Content="175" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="185" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="195" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="205" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="215" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <ComboBox x:Name="cB_QuerVR" HorizontalAlignment="Left" Height="30" Margin="417,267,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1">
+                        <ComboBoxItem Content="50" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="75" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="95" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <ComboBox x:Name="cB_FgGrVR" HorizontalAlignment="Left" Height="30" Margin="583,267,0,0" VerticalAlignment="Top" Width="126" RenderTransformOrigin="1.53,0.693" Grid.Column="1">
+                        <ComboBoxItem Content="10" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="11" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="12" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="13" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="14" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="15" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="16" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="17" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="18" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="19" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="20" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <TextBox x:Name="tB_ProfiltiefeHL" HorizontalAlignment="Left" Height="30" Margin="11,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" RenderTransformOrigin="-0.275,0.461" Grid.Column="1"/>
+                    <ComboBox x:Name="cB_markeHL" HorizontalAlignment="Left" Height="30" Margin="87,302,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1">
+
+                        <ComboBoxItem Content="Semperit" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="Continental" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="Kuhmo" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="Hankook" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <ComboBox x:Name="cB_FgBrHL" HorizontalAlignment="Left" Height="30" Margin="253,302,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1">
+                        <ComboBoxItem Content="175" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="185" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="195" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="205" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="215" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <ComboBox x:Name="cB_QuerHL" HorizontalAlignment="Left" Height="30" Margin="417,302,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1">
+                        <ComboBoxItem Content="50" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="75" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="95" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <ComboBox x:Name="cB_FgGrHL" HorizontalAlignment="Left" Height="30" Margin="583,302,0,0" VerticalAlignment="Top" Width="126" RenderTransformOrigin="1.53,0.693" Grid.Column="1">
+                        <ComboBoxItem Content="10" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="11" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="12" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="13" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="14" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="15" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="16" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="17" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="18" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="19" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="20" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <TextBox x:Name="tB_ProfiltiefeHR" HorizontalAlignment="Left" Height="30" Margin="11,337,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" RenderTransformOrigin="-0.275,0.461" Grid.Column="1"/>
+                    <ComboBox x:Name="cB_markeHR" HorizontalAlignment="Left" Height="30" Margin="87,337,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1">
+
+                        <ComboBoxItem Content="Semperit" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="Continental" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="Kuhmo" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="Hankook" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <ComboBox x:Name="cB_FgBrHR" HorizontalAlignment="Left" Height="30" Margin="253,337,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1">
+                        <ComboBoxItem Content="175" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="185" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="195" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="205" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="215" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <ComboBox x:Name="cB_QuerHR" HorizontalAlignment="Left" Height="30" Margin="417,337,0,0" VerticalAlignment="Top" Width="126" Grid.Column="1">
+                        <ComboBoxItem Content="50" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="75" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="95" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <ComboBox x:Name="cB_FgGrHR" HorizontalAlignment="Left" Height="30" Margin="583,337,0,0" VerticalAlignment="Top" Width="126" RenderTransformOrigin="1.53,0.693" Grid.Column="1">
+                        <ComboBoxItem Content="10" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="11" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="12" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="13" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="14" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="15" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="16" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="17" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="18" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="19" HorizontalAlignment="Left" Width="124"/>
+                        <ComboBoxItem Content="20" HorizontalAlignment="Left" Width="124"/>
+                    </ComboBox>
+                    <Label x:Name="lbl_profiltiefe" Content="Profiltiefe" HorizontalAlignment="Left" Margin="1,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.023,0.205" Width="66" Height="38" Grid.Column="1"/>
+                    <Label x:Name="lbl_reifenmarke" Content="Reifenmarke" HorizontalAlignment="Left" Margin="109,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.023,0.205" Width="78" Height="38" Grid.Column="1"/>
+                    <Label x:Name="lbl_reifenbreite" Content="Reifenbreite" HorizontalAlignment="Left" Margin="278,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.023,0.205" Width="78" Height="38" Grid.Column="1"/>
+                    <Label x:Name="lbl_quer" Content="Breiten/Höhen Verhältnis" HorizontalAlignment="Left" Margin="410,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.023,0.205" Width="143" Height="38" Grid.Column="1"/>
+                    <Label x:Name="lbl_größe" Content="Reifengröße in Zoll" HorizontalAlignment="Left" Margin="592,193,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.023,0.205" Width="110" Height="38" Grid.Column="1"/>
+                    <Button x:Name="btn_reifenpassdruck" Content="Reifenpass drucken" HorizontalAlignment="Left" Height="34" Margin="31,413,0,0" VerticalAlignment="Top" Width="133" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btn_reifenpassdruck_Copy" Content="Reifen auslagern" HorizontalAlignment="Left" Height="34" Margin="109,413,0,0" VerticalAlignment="Top" Width="122" Grid.Column="1"/>
+                    <Button x:Name="btn_löschen" HorizontalAlignment="Left" Height="34" Margin="449,413,0,0" VerticalAlignment="Top" Width="122" Content="Löschen" RenderTransformOrigin="0.718,0.539" Grid.Column="1"/>
+                    <Button x:Name="btn_speichern" HorizontalAlignment="Left" Height="34" Margin="587,413,0,0" VerticalAlignment="Top" Width="122" Content="Speichern" Grid.Column="1" Click="btn_speichern_Click"/>
+                    <StatusBar HorizontalAlignment="Left" Height="0" Margin="10,424,0,0" VerticalAlignment="Top" Width="1"/>
+                    <TextBox x:Name="tB_Lagerort" HorizontalAlignment="Left" Height="28" Margin="43,503,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="tB_Lagernr" HorizontalAlignment="Left" Height="28" Margin="253,503,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" Grid.Column="1" RenderTransformOrigin="0.496,2.143"/>
+                    <TextBox x:Name="tB_lagerid" HorizontalAlignment="Left" Height="28" Margin="516,503,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" Grid.Column="1"/>
+                    <Label Content="Lagerort" HorizontalAlignment="Left" Height="27" Margin="43,471,0,0" VerticalAlignment="Top" Width="66" Grid.ColumnSpan="2"/>
+                    <Label Content="Lagernr." HorizontalAlignment="Left" Height="27" Margin="253,471,0,0" VerticalAlignment="Top" Width="66" Grid.Column="1"/>
+                    <Label Content="LagerID" HorizontalAlignment="Left" Height="27" Margin="516,471,0,0" VerticalAlignment="Top" Width="66" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tbi_verwalten" Header="Verwalten">
+                <Grid Background="#FFE5E5E5">
+                    <TabControl HorizontalAlignment="Left" Height="85" Margin="810,581,-100,-100" VerticalAlignment="Top" Width="84">
+                        <TabItem Header="TabItem">
+                            <Grid Background="#FFE5E5E5"/>
+                        </TabItem>
+                        <TabItem Header="TabItem">
+                            <Grid Background="#FFE5E5E5"/>
+                        </TabItem>
+                    </TabControl>
+                    <Button x:Name="btn_depoübersicht" Content="Lagerkapazität" HorizontalAlignment="Left" Height="24" Margin="68,154,0,0" VerticalAlignment="Top" Width="129"/>
+                    <Button x:Name="btn_Lgreserv_" Content="Lagerplatz reservieren" HorizontalAlignment="Left" Height="24" Margin="68,210,0,0" VerticalAlignment="Top" Width="129"/>
+                    <Button x:Name="btn_freiLgp" Content="Freie Lagerplätze" HorizontalAlignment="Left" Height="24" Margin="68,260,0,0" VerticalAlignment="Top" Width="129"/>
+                    <ListBox HorizontalAlignment="Left" Height="202" Margin="68,339,0,0" VerticalAlignment="Top" Width="680"/>
+                    <Button x:Name="btn_excel" Content="Inventurliste" HorizontalAlignment="Left" Height="24" Margin="68,98,0,0" VerticalAlignment="Top" Width="129"/>
+                    <Label Content="Hier klicken um freie Lagerplätze zu ermitteln" HorizontalAlignment="Left" Margin="219,259,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Hier klicken um aktuelle Inventurliste auszudrucken" HorizontalAlignment="Left" Margin="219,96,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Hier klicken um aktuelle Auslastung zu ermitteln" HorizontalAlignment="Left" Margin="219,153,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Hier klicken um freien Lagerplatz zu reservieren" HorizontalAlignment="Left" Margin="219,209,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tbi_historie" Header="Historie">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
